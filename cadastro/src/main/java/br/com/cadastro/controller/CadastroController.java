@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.cadastro.exception.UsuarioNaoEncontradoException;
 import br.com.cadastro.model.Usuario;
 import br.com.cadastro.service.CadastroService;
 
@@ -26,12 +27,9 @@ public class CadastroController {
 	private CadastroService service;
 	
 	@GetMapping
-	public ResponseEntity<Usuario> consultaUsuario(@RequestParam String cpf) {
+	public ResponseEntity<Usuario> consultaUsuario(@RequestParam String cpf) throws Exception {
 		Usuario use = service.consultaUsuario(cpf);
-		if (use.getCpf() != null) {
-		 return ResponseEntity.status(200).body(use);
-		} 
-		 return ResponseEntity.notFound().build();
+		return ResponseEntity.status(200).body(use);
 	}
 	
 	
@@ -46,20 +44,15 @@ public class CadastroController {
 	}
 	
 	@PutMapping("/altera")
-	public ResponseEntity<Usuario> alteraUsuario(@RequestBody Usuario use) {
-		Usuario user = service.alteraUsuario(use);
-		if(user == null) {
-			return ResponseEntity.notFound().build();
-		}
-	
-		return ResponseEntity.status(200).body(user);
+	public ResponseEntity<Usuario> alteraUsuario(@RequestBody Usuario user) throws UsuarioNaoEncontradoException {
+		service.alteraUsuario(user);
+		return ResponseEntity.status(200).build();
 	}
 	
 	@DeleteMapping
-	public ResponseEntity<Void> deletaUsuario(String cpf) {
-		 boolean use= service.deletaUsuario(cpf);
-		ResponseEntity.status(204).body(use);
-		return ResponseEntity.notFound().build();
-	}
+	public ResponseEntity<Void> deletaUsuario(String cpf) throws UsuarioNaoEncontradoException {
+		service.deletaUsuario(cpf);
+		return ResponseEntity.status(204).build();			 
+		}
 	
 }
