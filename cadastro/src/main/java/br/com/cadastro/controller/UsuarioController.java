@@ -1,11 +1,11 @@
 package br.com.cadastro.controller;
 
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,14 +31,14 @@ public class UsuarioController {
 	private UsuarioService service;
 	
 	@GetMapping("/{cpf}")
-	public ResponseEntity<Usuario> consultaUsuario(@PathVariable String cpf) throws Exception {
-		return ResponseEntity.status(200).body(service.consultaUsuario(cpf));
+	public ResponseEntity<Usuario> consultaUsuario(@PathVariable String cpf) throws UsuarioNaoEncontradoException {
+		return ResponseEntity.status(200).body(service.consultaUsuarioPorId(cpf));
 	}
 	
 	
 	@GetMapping
-	public ResponseEntity<List<Usuario>> listaUsuario() {	
-		return ResponseEntity.status(200).body(service.listaUsuario());
+	public ResponseEntity<Page<Usuario>> listaUsuario(Pageable pageable) {	
+		return ResponseEntity.status(200).body(service.listaUsuario(pageable));
 	}
 	
 	@PostMapping
@@ -48,8 +48,7 @@ public class UsuarioController {
 	
 	@PutMapping("/{cpf}")
 	public ResponseEntity<Usuario> alteraUsuario(@PathVariable String cpf, @Valid @RequestBody AlteraUsuarioDto userDto) throws UsuarioNaoEncontradoException {
-		Usuario user = service.alteraUsuario(userDto, cpf);
-		return ResponseEntity.status(200).body(user);
+		return ResponseEntity.status(200).body(service.alteraUsuario(userDto, cpf));
 	}
 	
 	@DeleteMapping("/{cpf}")

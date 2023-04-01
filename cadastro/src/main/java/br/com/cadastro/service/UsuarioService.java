@@ -11,6 +11,9 @@ import javax.validation.ValidatorFactory;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +21,7 @@ import br.com.cadastro.dto.AlteraUsuarioDto;
 import br.com.cadastro.dto.CadastraUsuarioDto;
 import br.com.cadastro.exception.UsuarioExistenteException;
 import br.com.cadastro.exception.UsuarioNaoEncontradoException;
+import br.com.cadastro.model.Endereco;
 import br.com.cadastro.model.Usuario;
 import br.com.cadastro.repository.UsuarioRepository;
 
@@ -35,13 +39,8 @@ public class UsuarioService {
 		return optional.orElseThrow(() -> new UsuarioNaoEncontradoException("Usuário não encontrado!"));
 	}
 	
-	//método duplicado 
-	public Usuario consultaUsuario(String cpf) throws Exception {	
-		 return consultaUsuarioPorId(cpf);
-	}
 	
 	public Usuario cadastraUsuario( CadastraUsuarioDto dto) throws UsuarioExistenteException {	
-
 		if (repository.findById(dto.getCpf()).isPresent()) {
 			throw new UsuarioExistenteException("Usuário já existe");
 		}	
@@ -49,15 +48,15 @@ public class UsuarioService {
 		return repository.save(usuario);
 	}
 	
-	public List<Usuario> listaUsuario() {
-		return repository.findAll();
-	}
+	public Page<Usuario> listaUsuario(Pageable pageable) {
+		return repository.findAll(pageable);
+	} 
 	
 	
 	public Usuario alteraUsuario(AlteraUsuarioDto dto, String cpf) throws UsuarioNaoEncontradoException {
-		consultaUsuarioPorId(cpf);
-		Usuario usuario = modelMapper.map(dto, Usuario.class);
-		return repository.save(usuario);
+		Usuario user = consultaUsuarioPorId(cpf);
+		modelMapper.map(dto, user);
+		return repository.save(user);
 	}
 
 	public void deletaUsuario(String cpf) throws UsuarioNaoEncontradoException {
