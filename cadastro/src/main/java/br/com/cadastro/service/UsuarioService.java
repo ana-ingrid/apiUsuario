@@ -48,7 +48,7 @@ public class UsuarioService {
 		return repository.save(usuario);
 	}
 	
-	public Page<Usuario> listaUsuario(Pageable pageable) {
+	public Page<Usuario> ConsultaUsuarios(Pageable pageable) {
 		return repository.findAll(pageable);
 	} 
 	

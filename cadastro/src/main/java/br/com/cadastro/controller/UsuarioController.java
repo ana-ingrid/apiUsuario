@@ -25,7 +25,7 @@ import br.com.cadastro.service.UsuarioService;
 
 @RestController
 @RequestMapping("/usuarios")
-public class UsuarioController {
+ public class UsuarioController {
 
 	@Autowired
 	private UsuarioService service;
@@ -37,8 +37,8 @@ public class UsuarioController {
 	
 	
 	@GetMapping
-	public ResponseEntity<Page<Usuario>> listaUsuario(Pageable pageable) {	
-		return ResponseEntity.status(200).body(service.listaUsuario(pageable));
+	public ResponseEntity<Page<Usuario>> ConsultaUsuarios(Pageable pageable) {	
+		return ResponseEntity.status(200).body(service.ConsultaUsuarios(pageable));
 	}
 	
 	@PostMapping
