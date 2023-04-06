@@ -1,14 +1,24 @@
 package br.com.cadastro.dto;
 
+import javax.validation.constraints.Size;
+
+import com.sun.istack.NotNull;
 
 public class EnderecoDto {
 	
+	@NotNull
+	@Size(max = 50, message = "Inválido, máximo de 100 caracteres")
 	private String logradouro;
 	
+	@Size(min = 1 , max = 10, message = "Número inválido")
 	private Integer numero;
 	
+	@NotNull
+	@Size(max = 50, message = "Inválido, máximo de 50 caracteres")
 	private String cidade;
 	
+	@NotNull
+	@Size(min = 1, max = 20, message = "Inválido, tamanho deve ser 2 caracteres")
 	private String uf;
 
 

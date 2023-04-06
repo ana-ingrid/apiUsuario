@@ -1,6 +1,8 @@
 package br.com.cadastro.controller;
 
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.cadastro.dto.AlteraUsuarioDto;
+import br.com.cadastro.dto.BuscaAvancadaDto;
 import br.com.cadastro.dto.CadastraUsuarioDto;
 import br.com.cadastro.exception.UsuarioExistenteException;
 import br.com.cadastro.exception.UsuarioNaoEncontradoException;
@@ -56,4 +60,9 @@ import br.com.cadastro.service.UsuarioService;
 		service.deletaUsuario(cpf);
 		return ResponseEntity.status(204).build();			 
 		}
+
+	@GetMapping("/buscaAvancada")
+	public ResponseEntity<List<Usuario>> BuscaAvancadaUsuario(BuscaAvancadaDto dto) throws UsuarioNaoEncontradoException {
+		return ResponseEntity.status(200).body(service.buscaAvancadaUsuario(dto));
+	}
 }

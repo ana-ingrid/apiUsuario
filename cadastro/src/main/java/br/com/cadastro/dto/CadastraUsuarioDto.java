@@ -3,6 +3,7 @@ package br.com.cadastro.dto;
 import java.util.Date;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -13,6 +14,7 @@ public class CadastraUsuarioDto {
 	private String nome;
 
 	@NotNull(message = "CPF obrigatório")
+	@Size(min=10, max=10, message="CPF inválido")
 	private String cpf;
 
 	@NotNull(message = "Sexo obrigatório")
@@ -22,6 +24,7 @@ public class CadastraUsuarioDto {
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date nascimento;
 		
+	@NotNull(message="Endereço obrigatório")
 	private EnderecoDto endereco;
 
 	public String getNome() {
