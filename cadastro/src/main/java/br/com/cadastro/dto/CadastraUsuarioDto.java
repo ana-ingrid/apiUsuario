@@ -1,9 +1,8 @@
 package br.com.cadastro.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -24,7 +23,7 @@ public class CadastraUsuarioDto {
 
 	@NotNull(message = "Data obrigatória")
 	@JsonFormat(pattern="yyyy-MM-dd")
-	private Date nascimento;
+	private LocalDate nascimento;
 		
 	@NotNull(message="Endereço obrigatório")
 	private EnderecoDto endereco;
@@ -61,11 +60,11 @@ public class CadastraUsuarioDto {
 		this.sexo = sexo;
 	}
 
-	public Date getNascimento() {
+	public LocalDate getNascimento() {
 		return nascimento;
 	}
 
-	public void setNascimento(Date nascimento) {
+	public void setNascimento(LocalDate nascimento) {
 		this.nascimento = nascimento;
 	}
 		

@@ -1,5 +1,5 @@
 package br.com.cadastro.dto;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -19,7 +19,7 @@ public class AlteraUsuarioDto {
 	
 	@NotNull(message="Data obrigatória")
 	@JsonFormat(pattern="yyyy-MM-dd")
-	private Date nascimento;
+	private LocalDate nascimento;
 	
 	private EnderecoDto endereco;
 
@@ -42,11 +42,11 @@ public class AlteraUsuarioDto {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	public Date getNascimento() {
+	public LocalDate getNascimento() {
 		return nascimento;
 	}
-	public void setNascimento(Date nascimento) {
-		this.nascimento = nascimento;
+	public void setNascimento(LocalDate localDate) {
+		this.nascimento = localDate;
 	}
 	
 

@@ -3,9 +3,9 @@ package br.com.cadastro.service;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,11 +44,11 @@ public class UsuarioServiceTest {
 
 	@Test
 	public void criaUsuarioSucesso() throws UsuarioExistenteException {
-		
+
 		CadastraUsuarioDto dto = new CadastraUsuarioDto();
 		dto.setNome("testNome");
 		dto.setCpf("12345678910");
-		dto.setNascimento(new Date());
+		dto.setNascimento(LocalDate.now());
 		dto.setSexo("testSexo");
 
 		Endereco endereco = new Endereco();
@@ -56,7 +56,7 @@ public class UsuarioServiceTest {
 		endereco.setNumero(1);
 		endereco.setCidade("testCidade");
 		endereco.setUf("testUf");
-		
+
 		Usuario user = new Usuario();
 		user.setNome(dto.getNome());
 		user.setCpf(dto.getCpf());
@@ -78,8 +78,8 @@ public class UsuarioServiceTest {
 		user.setNome("testNome");
 		user.setCpf("12345678910");
 		user.setSexo("testSexo");
-		user.setNascimento(new Date());
-		
+		user.setNascimento(LocalDate.now());
+
 		Endereco endereco = new Endereco();
 		endereco.setLogradouro("testLogradouro");
 		endereco.setNumero(1);
@@ -87,7 +87,7 @@ public class UsuarioServiceTest {
 		endereco.setUf("testUf");
 
 		user.setEndereco(endereco);
-		
+
 		Mockito.when(repository.findById(user.getCpf())).thenReturn(Optional.of(user));
 		Usuario usuarioPorId = service.consultaUsuarioPorId(user.getCpf());
 		assertNotNull(usuarioPorId);
@@ -96,13 +96,15 @@ public class UsuarioServiceTest {
 	@Test
 	public void consultaUsuariosSucesso() throws UsuarioNaoEncontradoException {
 
-//		User1
+		// User1
 		Usuario user1 = new Usuario();
 		user1.setNome("testNome");
 		user1.setCpf("12345678910");
 		user1.setSexo("testSexo");
-		user1.setNascimento(new Date());
+		//data
+		user1.setNascimento(LocalDate.now());
 
+		
 		Endereco endereco1 = new Endereco();
 		endereco1.setLogradouro("testeLogradouro");
 		endereco1.setNumero(1);
@@ -111,12 +113,13 @@ public class UsuarioServiceTest {
 
 		user1.setEndereco(endereco1);
 
-//		User2
+		// User2
 		Usuario user2 = new Usuario();
 		user2.setNome("test");
 		user2.setCpf("12345678911");
 		user2.setSexo("testSexo");
-		user2.setNascimento(new Date());
+		user2.setNascimento(LocalDate.now());
+
 
 		Endereco endereco2 = new Endereco();
 		endereco2.setLogradouro("testeLogradouro");
@@ -125,16 +128,16 @@ public class UsuarioServiceTest {
 		endereco2.setUf("testeUf");
 
 		user2.setEndereco(endereco2);
-				
+
 		List<Usuario> list = new ArrayList<Usuario>();
 		list.add(user1);
 		list.add(user2);
-		Mockito.when(repository.findAll(Mockito.any(Pageable.class))).thenReturn( new PageImpl<Usuario>(list));
-		
+		Mockito.when(repository.findAll(Mockito.any(Pageable.class))).thenReturn(new PageImpl<Usuario>(list));
+
 		Page<Usuario> pageable = service.ConsultaUsuarios(Pageable.ofSize(2));
 		assertNotNull(pageable);
 		assertEquals(pageable.getContent().size(), list.size());
-		}
+	}
 
 	@Test
 	public void alteraUsuarioSucesso() throws UsuarioNaoEncontradoException, UsuarioExistenteException {
@@ -143,7 +146,8 @@ public class UsuarioServiceTest {
 		user.setNome("testNome");
 		user.setCpf("12345678910");
 		user.setSexo("testSexo");
-		user.setNascimento(new Date());
+		//data
+		user.setNascimento(LocalDate.now());
 
 		Endereco endereco1 = new Endereco();
 		endereco1.setLogradouro("testeLogradouro");
@@ -155,7 +159,7 @@ public class UsuarioServiceTest {
 
 		AlteraUsuarioDto dto = new AlteraUsuarioDto();
 		dto.setNome("test");
-		dto.setNascimento(new Date());
+		dto.setNascimento(LocalDate.now());
 		dto.setSexo("test");
 
 		Mockito.when(repository.findById(user.getCpf())).thenReturn(Optional.of(user));
@@ -173,7 +177,7 @@ public class UsuarioServiceTest {
 		user.setNome("test");
 		user.setCpf("12345678910");
 		user.setSexo("testSexo");
-		user.setNascimento(new Date());
+		user.setNascimento(LocalDate.now());
 
 		Endereco endereco = new Endereco();
 		endereco.setLogradouro("testLogradouro");
@@ -185,21 +189,21 @@ public class UsuarioServiceTest {
 
 		Mockito.when(repository.findById(user.getCpf())).thenReturn(Optional.of(user));
 		Mockito.doNothing().when(repository).delete(user);
-		
+
 		service.deletaUsuario(user.getCpf());
-		Mockito.verify(repository, Mockito.times(1)).delete(user);		
+		Mockito.verify(repository, Mockito.times(1)).delete(user);
 	}
 
 	@Test
 	public void buscaAvancada() throws UsuarioNaoEncontradoException {
-		
+
 		BuscaAvancadaDto dto = new BuscaAvancadaDto();
 		dto.setCpf("12345678910");
-		dto.setNascimento(new Date());
+		dto.setNascimento(LocalDate.now());
 		dto.setSexo("testSexo");
 		dto.setCidade("testCidade");
 		dto.setUf("testUf");
-		
+
 		Usuario user = new Usuario();
 		user.setCpf(dto.getCpf());
 		user.setSexo(dto.getSexo());
@@ -208,11 +212,11 @@ public class UsuarioServiceTest {
 		endereco.setCidade(dto.getCidade());
 		endereco.setUf(dto.getUf());
 		user.setEndereco(endereco);
-	
+
 		Example<Usuario> example = Example.of(user);
 		Mockito.when(repository.findAll(example)).thenReturn(Collections.singletonList(user));
 		List<Usuario> buscaAvancada = service.buscaAvancadaUsuario(dto);
 		assertNotNull(buscaAvancada);
 	}
-	
+
 }

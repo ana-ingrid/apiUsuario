@@ -1,6 +1,6 @@
 package br.com.cadastro.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -13,7 +13,7 @@ public class BuscaAvancadaDto {
 	private String cpf;
 	
 	@JsonFormat(pattern="yyyy-MM-dd")
-	private Date Nascimento;
+	private LocalDate Nascimento;
 	
 	private String sexo;
 	
@@ -22,11 +22,11 @@ public class BuscaAvancadaDto {
 	private String uf;
 	
 	
-	public Date getNascimento() {
+	public LocalDate getNascimento() {
 		return Nascimento;
 	}
 	
-	public void setNascimento(Date nascimento) {
+	public void setNascimento(LocalDate nascimento) {
 		Nascimento = nascimento;
 	}
 	
