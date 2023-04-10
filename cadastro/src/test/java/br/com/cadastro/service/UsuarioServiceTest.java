@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -19,12 +20,10 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 
 import br.com.cadastro.dto.AlteraUsuarioDto;
 import br.com.cadastro.dto.BuscaAvancadaDto;
 import br.com.cadastro.dto.CadastraUsuarioDto;
-import br.com.cadastro.dto.EnderecoDto;
 import br.com.cadastro.exception.UsuarioExistenteException;
 import br.com.cadastro.exception.UsuarioNaoEncontradoException;
 import br.com.cadastro.model.Endereco;
@@ -211,6 +210,7 @@ public class UsuarioServiceTest {
 		user.setEndereco(endereco);
 	
 		Example<Usuario> example = Example.of(user);
+		Mockito.when(repository.findAll(example)).thenReturn(Collections.singletonList(user));
 		List<Usuario> buscaAvancada = service.buscaAvancadaUsuario(dto);
 		assertNotNull(buscaAvancada);
 	}

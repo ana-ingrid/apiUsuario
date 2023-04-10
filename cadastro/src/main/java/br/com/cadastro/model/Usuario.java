@@ -14,8 +14,6 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import br.com.cadastro.dto.EnderecoDto;
-
 @Entity
 @Table(name="tb_usuario")
 public class Usuario {
