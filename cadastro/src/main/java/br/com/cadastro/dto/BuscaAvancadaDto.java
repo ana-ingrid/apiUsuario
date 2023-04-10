@@ -2,26 +2,23 @@ package br.com.cadastro.dto;
 
 import java.util.Date;
 
-import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 public class BuscaAvancadaDto {
 
-	@Size(min=10, max=10, message="CPF inválido")
+	@CPF
 	private String cpf;
 	
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date Nascimento;
 	
-	@Size(min = 1, max = 20, message = "Inválido, tamanho deve ser de 1 a 20 caracteres")
 	private String sexo;
 	
-	@Size( max = 50, message = "Inválido, máximo de até 50 caracteres")
 	private String cidade;
 	
-	@Size(min = 1, max = 20, message = "Inválido, tamanho deve ser 2 caracteres")
 	private String uf;
 	
 	

@@ -50,8 +50,9 @@ public class UsuarioService {
 	public Usuario alteraUsuario(AlteraUsuarioDto dto, String cpf) throws UsuarioNaoEncontradoException {
 		Usuario user = consultaUsuarioPorId(cpf);
 		modelMapper.map(dto, user);
-		return repository.save(user);	}
-
+		return repository.save(user);	
+	}
+	
 	
 	public void deletaUsuario(String cpf) throws UsuarioNaoEncontradoException {
 		Usuario user = consultaUsuarioPorId(cpf);

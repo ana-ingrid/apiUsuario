@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 
@@ -14,7 +16,7 @@ public class CadastraUsuarioDto {
 	private String nome;
 
 	@NotNull(message = "CPF obrigatório")
-	@Size(min=10, max=10, message="CPF inválido")
+	@CPF
 	private String cpf;
 
 	@NotNull(message = "Sexo obrigatório")
