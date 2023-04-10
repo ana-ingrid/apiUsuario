@@ -17,4 +17,4 @@
 
 <p> Execute o projeto através do IDE, abra um navegador de sua preferência e acesse: http://localhost:8080, não há especificação de porta no projeto, sendo assim, é utilizada a porta padrão 8080.</p>
 <p> O banco de dados utilizado foi o MySQL, Nenhuma versão foi usada. Crie um banco de dados com o nome que foi declarado na url do banco de dados no arquivo application.properties.</p>
-<p>Para o acesso a documentação Swagger, abra um navegador de sua preferência e acesse: http://localhost:8080/apiusuario/swagger-ui.html .</p>
+<p>Para o acesso a documentação Swagger, abra um navegador de sua preferência e acesse: http://localhost:8080/api-usuario/swagger-ui.html .</p>
