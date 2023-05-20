@@ -1,0 +1,15 @@
+{
+  "nome": "Ana Ingrid",
+  "sexo": "feminino",
+  "nascimento": "2003-04-22",
+
+  "endereco": {
+
+    "logradouro": "Rua emilia",
+    "numero": 17,
+    "cidade": "rio de janeiro",
+    "uf": "RJ"
+
+  }
+
+}
