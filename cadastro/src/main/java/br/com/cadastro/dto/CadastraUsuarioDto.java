@@ -11,62 +11,62 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class CadastraUsuarioDto {
 
-	@NotNull(message = "Nome Obrigatório")
-	private String nome;
+    @NotNull(message = "Nome Obrigatório")
+    private String nome;
 
-	@NotNull(message = "CPF obrigatório")
-	@CPF
-	private String cpf;
+    @NotNull(message = "CPF obrigatório")
+    @CPF
+    private String cpf;
 
-	@NotNull(message = "Sexo obrigatório")
-	private String sexo;
+    @NotNull(message = "Sexo obrigatório")
+    private String sexo;
 
-	@NotNull(message = "Data obrigatória")
-	@JsonFormat(pattern="yyyy-MM-dd")
-	private LocalDate nascimento;
-		
-	@NotNull(message="Endereço obrigatório")
-	private EnderecoDto endereco;
+    @NotNull(message = "Data obrigatória")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate nascimento;
 
-	public String getNome() {
-		return nome;
-	}
+    @NotNull(message = "Endereço obrigatório")
+    private EnderecoDto endereco;
 
-	public EnderecoDto getEndereco() {
-		return endereco;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public void setEndereco(EnderecoDto endereco) {
-		this.endereco = endereco;
-	}
+    public EnderecoDto getEndereco() {
+        return endereco;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public void setEndereco(EnderecoDto endereco) {
+        this.endereco = endereco;
+    }
 
-	public String getCpf() {
-		return cpf;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
+    public String getCpf() {
+        return cpf;
+    }
 
-	public String getSexo() {
-		return sexo;
-	}
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
+    public String getSexo() {
+        return sexo;
+    }
 
-	public LocalDate getNascimento() {
-		return nascimento;
-	}
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
 
-	public void setNascimento(LocalDate nascimento) {
-		this.nascimento = nascimento;
-	}
-		
-	
+    public LocalDate getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(LocalDate nascimento) {
+        this.nascimento = nascimento;
+    }
+
+
 }

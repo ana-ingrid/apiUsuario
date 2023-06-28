@@ -1,8 +1,15 @@
 package br.com.cadastro.service;
 
-import java.util.List;
-import java.util.Optional;
-
+import br.com.cadastro.config.MensagemValidacao;
+import br.com.cadastro.dto.AlteraUsuarioDto;
+import br.com.cadastro.dto.BuscaAvancadaDto;
+import br.com.cadastro.dto.CadastraUsuarioDto;
+import br.com.cadastro.exception.FiltroException;
+import br.com.cadastro.exception.RecursoExistenteException;
+import br.com.cadastro.exception.RecursoNaoEncontradoException;
+import br.com.cadastro.model.Endereco;
+import br.com.cadastro.model.Usuario;
+import br.com.cadastro.repository.UsuarioRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -10,70 +17,69 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import br.com.cadastro.dto.AlteraUsuarioDto;
-import br.com.cadastro.dto.BuscaAvancadaDto;
-import br.com.cadastro.dto.CadastraUsuarioDto;
-import br.com.cadastro.exception.UsuarioExistenteException;
-import br.com.cadastro.exception.UsuarioNaoEncontradoException;
-import br.com.cadastro.model.Endereco;
-import br.com.cadastro.model.Usuario;
-import br.com.cadastro.repository.UsuarioRepository;
+import java.util.List;
+import java.util.Objects;
 
+import static br.com.cadastro.config.MensagemValidacao.getMensagemValidacao;
 @Service
 public class UsuarioService {
 
-	@Autowired
 	private UsuarioRepository repository;
-	
-	@Autowired
 	private ModelMapper modelMapper;
-	
-	public Usuario consultaUsuarioPorId(String cpf) throws UsuarioNaoEncontradoException {
-		Optional<Usuario> optional = repository.findById(cpf);
-		return optional.orElseThrow(() -> new UsuarioNaoEncontradoException("Usuário não encontrado!"));	
+
+	@Autowired
+	public UsuarioService(UsuarioRepository repository, ModelMapper modelMapper) {
+		this.repository = repository;
+		this.modelMapper = modelMapper;
 	}
-	
-	
-	public Usuario cadastraUsuario( CadastraUsuarioDto dto) throws UsuarioExistenteException {	
-		if (repository.findById(dto.getCpf()).isPresent()) {
-			throw new UsuarioExistenteException("Usuário já existe");
-		}	
-		Usuario usuario = modelMapper.map(dto, Usuario.class);
+
+	public Usuario consultaUsuarioPorId(String cpf, boolean withThrow) throws RecursoNaoEncontradoException {
+		return repository.findById(cpf)
+				.orElseGet(() -> {
+					if (withThrow)
+						throw new RecursoNaoEncontradoException(getMensagemValidacao("validacao.excecao.usuario.nao.encontrado"));
+					return null;
+		});
+	}
+
+	public Usuario cadastraUsuario( CadastraUsuarioDto cadastraUsuarioDto) throws RecursoExistenteException {
+		if  (Objects.nonNull(consultaUsuarioPorId(cadastraUsuarioDto.getCpf(), false))){
+			throw new RecursoExistenteException(MensagemValidacao.getMensagemValidacao("validacao.excecao.usuario.encontrado"));
+		}
+
+		Usuario usuario = modelMapper.map(cadastraUsuarioDto, Usuario.class);
 		return repository.save(usuario);
 	}
 	
-	public Page<Usuario> ConsultaUsuarios(Pageable pageable) {
+	public Page<Usuario> consultaUsuariosPaginada(Pageable pageable) {
+
 		return repository.findAll(pageable);
 	} 
-	
-	
-	public Usuario alteraUsuario(AlteraUsuarioDto dto, String cpf) throws UsuarioNaoEncontradoException {
-		Usuario user = consultaUsuarioPorId(cpf);
-		modelMapper.map(dto, user);
-		return repository.save(user);	
+
+	public Usuario alteraUsuario(AlteraUsuarioDto alteraUsuarioDto, String cpf) throws RecursoNaoEncontradoException {
+		Usuario user = consultaUsuarioPorId(cpf, true);
+		modelMapper.map(alteraUsuarioDto, user);
+		return repository.save(user);
 	}
-	
-	
-	public void deletaUsuario(String cpf) throws UsuarioNaoEncontradoException {
-		Usuario user = consultaUsuarioPorId(cpf);
+
+	public void deletaUsuario(String cpf) throws RecursoNaoEncontradoException {
+		Usuario user = consultaUsuarioPorId(cpf, true);
 		repository.delete(user);
 	}
 
-	public List<Usuario> buscaAvancadaUsuario(BuscaAvancadaDto dto) throws UsuarioNaoEncontradoException {
-		
-		Usuario usuario = new Usuario();
-		usuario.setCpf(dto.getCpf());
-		usuario.setNascimento(dto.getNascimento());
-		usuario.setSexo(dto.getSexo());
-		Endereco endereco= new Endereco();
-		endereco.setCidade(dto.getCidade());
-		endereco.setUf(dto.getUf());
+	public List<Usuario> buscaAvancadaUsuario(BuscaAvancadaDto buscaAvancadaDto) throws RecursoNaoEncontradoException {
+
+		if (Objects.isNull(buscaAvancadaDto.getCpf()) && Objects.isNull(buscaAvancadaDto.getNascimento()) &&
+				Objects.isNull(buscaAvancadaDto.getSexo()) && Objects.isNull(buscaAvancadaDto.getNome())
+				&& Objects.isNull(buscaAvancadaDto.getCidade()) && Objects.isNull(buscaAvancadaDto.getCep())
+				&& Objects.isNull(buscaAvancadaDto.getUf())) {
+			throw new FiltroException(getMensagemValidacao("validacao.excecao.sem.filtro"));
+		}
+
+		Usuario usuario = modelMapper.map(buscaAvancadaDto, Usuario.class);
+		Endereco endereco = modelMapper.map(buscaAvancadaDto, Endereco.class);
 		usuario.setEndereco(endereco);
-				
 		Example<Usuario> example = Example.of(usuario);
 		return repository.findAll(example);
-	
 		}
-		
 	}
-	

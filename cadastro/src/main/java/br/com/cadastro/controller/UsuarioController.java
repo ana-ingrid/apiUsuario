@@ -46,7 +46,7 @@ import br.com.cadastro.service.UsuarioService;
 	@ApiResponses(value = { @ApiResponse(code = 404, message = "Sem Registros de Usuários") })
 	@GetMapping
 	public ResponseEntity<Page<Usuario>> consultaUsuarios(Pageable pageable) {
-		return ResponseEntity.status(200).body(service.ConsultaUsuariosPaginada(pageable));
+		return ResponseEntity.status(200).body(service.consultaUsuariosPaginada(pageable));
 	}
 
 	@ApiOperation("Cadastro dos Dados do Usuário")

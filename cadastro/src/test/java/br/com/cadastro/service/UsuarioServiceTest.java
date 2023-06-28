@@ -1,20 +1,20 @@
 package br.com.cadastro.service;
 
-import static org.junit.Assert.assertNotNull;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
+import br.com.cadastro.config.MensagemValidacao;
+import br.com.cadastro.exception.FiltroException;
+import classe.ObjetoJson;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -24,14 +24,27 @@ import org.springframework.data.domain.Pageable;
 import br.com.cadastro.dto.AlteraUsuarioDto;
 import br.com.cadastro.dto.BuscaAvancadaDto;
 import br.com.cadastro.dto.CadastraUsuarioDto;
-import br.com.cadastro.exception.UsuarioExistenteException;
-import br.com.cadastro.exception.UsuarioNaoEncontradoException;
+import br.com.cadastro.exception.RecursoExistenteException;
+import br.com.cadastro.exception.RecursoNaoEncontradoException;
 import br.com.cadastro.model.Endereco;
 import br.com.cadastro.model.Usuario;
 import br.com.cadastro.repository.UsuarioRepository;
+import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringRunner.class)
 public class UsuarioServiceTest {
+
+	protected static final String USUARIO_JSON = "usuario.json";
+
+	protected static final String CADASTRA_USUARIO_DTO_JSON = "cadastraUsuarioDto.json";
+
+	protected static final String ALTERA_USUARIO_DTO_JSON = "alteraUsuarioDto.json";
+
+	protected static final String OUTRO_USUARIO_JSON = "outroUsuario.json";
+
+	protected static final String BUSCA_AVANCADA_DTO_JSON = "buscaAvancadaDto.json";
+
+	protected static final String USUARIO_PATH = "/mocks";
 
 	@InjectMocks
 	private UsuarioService service;
@@ -42,181 +55,163 @@ public class UsuarioServiceTest {
 	@Mock
 	private ModelMapper mapper;
 
-	@Test
-	public void criaUsuarioSucesso() throws UsuarioExistenteException {
 
-		CadastraUsuarioDto dto = new CadastraUsuarioDto();
-		dto.setNome("testNome");
-		dto.setCpf("12345678910");
-		dto.setNascimento(LocalDate.now());
-		dto.setSexo("testSexo");
+	protected static Usuario getMockUsuario() {
+		return ObjetoJson.getMockObject(USUARIO_PATH, USUARIO_JSON, Usuario.class);
+	}
 
-		Endereco endereco = new Endereco();
-		endereco.setLogradouro("testLogradouro");
-		endereco.setNumero(1);
-		endereco.setCidade("testCidade");
-		endereco.setUf("testUf");
+	protected static Usuario getMockOutroUsuario() {
+		return ObjetoJson.getMockObject(USUARIO_PATH, OUTRO_USUARIO_JSON, Usuario.class);
+	}
 
-		Usuario user = new Usuario();
-		user.setNome(dto.getNome());
-		user.setCpf(dto.getCpf());
-		user.setSexo(dto.getSexo());
-		user.setEndereco(endereco);
+	protected static CadastraUsuarioDto getMockCadastraUsuarioDto() {
+		return ObjetoJson.getMockObject(USUARIO_PATH, CADASTRA_USUARIO_DTO_JSON, CadastraUsuarioDto.class);
+	}
 
-		Mockito.when(repository.findById(dto.getCpf())).thenReturn(Optional.empty());
-		Mockito.when(mapper.map(dto, Usuario.class)).thenReturn(user);
-		Mockito.when(repository.save(user)).thenReturn(user);
+	protected static AlteraUsuarioDto getAlteraUsuarioDto() {
+		return ObjetoJson.getMockObject(USUARIO_PATH, ALTERA_USUARIO_DTO_JSON, AlteraUsuarioDto.class);
+	}
 
-		Usuario user1 = service.cadastraUsuario(dto);
-		assertNotNull(user1);
+	protected static BuscaAvancadaDto getMockBuscaAvancadaDto() {
+		return ObjetoJson.getMockObject(USUARIO_PATH, BUSCA_AVANCADA_DTO_JSON, BuscaAvancadaDto.class);
 	}
 
 	@Test
-	public void consultaUsuarioSucesso() throws UsuarioNaoEncontradoException {
+	public void cadastraUsuarioSucesso() throws RecursoExistenteException {
+		CadastraUsuarioDto usuarioDto = getMockCadastraUsuarioDto();
+		Usuario usuario = getMockUsuario();
 
-		Usuario user = new Usuario();
-		user.setNome("testNome");
-		user.setCpf("12345678910");
-		user.setSexo("testSexo");
-		user.setNascimento(LocalDate.now());
+		when(repository.findById(usuarioDto.getCpf())).thenReturn(Optional.empty());
+		when(mapper.map(any(), any())).thenReturn(usuario);
+		when(repository.save(usuario)).thenReturn(usuario);
 
-		Endereco endereco = new Endereco();
-		endereco.setLogradouro("testLogradouro");
-		endereco.setNumero(1);
-		endereco.setCidade("testCidade");
-		endereco.setUf("testUf");
+		Usuario metodoCadastra = service.cadastraUsuario(usuarioDto);
+		assertEquals(usuario.getCpf(), metodoCadastra.getCpf());
+	}
+	@Test
+	public void cadastraUsuarioException() {
+		CadastraUsuarioDto usuarioDto = getMockCadastraUsuarioDto();
+		Usuario usuario = getMockUsuario();
+		when(repository.findById(usuarioDto.getCpf())).thenReturn(Optional.of(usuario));
 
-		user.setEndereco(endereco);
+		assertThatThrownBy(() -> {
+			service.cadastraUsuario(usuarioDto);
+		}).isInstanceOf(RecursoExistenteException.class)
+				.hasMessage(MensagemValidacao.getMensagemValidacao("validacao.excecao.usuario.encontrado"));
+	}
 
-		Mockito.when(repository.findById(user.getCpf())).thenReturn(Optional.of(user));
-		Usuario usuarioPorId = service.consultaUsuarioPorId(user.getCpf());
+	@Test
+	public void consultaUsuarioSucesso() throws RecursoNaoEncontradoException {
+		Usuario usuario = getMockUsuario();
+		when(repository.findById(usuario.getCpf())).thenReturn(Optional.of(usuario));
+		Usuario usuarioPorId = service.consultaUsuarioPorId(usuario.getCpf(),true);
+
 		assertNotNull(usuarioPorId);
+		assertEquals(usuario.getCpf(), usuarioPorId.getCpf());
 	}
 
 	@Test
-	public void consultaUsuariosSucesso() throws UsuarioNaoEncontradoException {
+	public void consultaUsuarioException() throws RecursoNaoEncontradoException {
+		Usuario usuario = getMockUsuario();
+		when(repository.findById(usuario.getCpf())).thenReturn(Optional.empty());
 
-		// User1
-		Usuario user1 = new Usuario();
-		user1.setNome("testNome");
-		user1.setCpf("12345678910");
-		user1.setSexo("testSexo");
-		//data
-		user1.setNascimento(LocalDate.now());
+		assertThatThrownBy(() -> {
+			service.consultaUsuarioPorId(usuario.getCpf(), true);
+		}).isInstanceOf(RecursoNaoEncontradoException.class)
+				.hasMessage(MensagemValidacao.getMensagemValidacao("validacao.excecao.usuario.nao.encontrado"));
+	}
 
-		
-		Endereco endereco1 = new Endereco();
-		endereco1.setLogradouro("testeLogradouro");
-		endereco1.setNumero(1);
-		endereco1.setCidade("testeCidade");
-		endereco1.setUf("testeUf");
+	@Test
+	public void consultaUsuarioNull() throws RecursoNaoEncontradoException {
+		Usuario usuario = getMockUsuario();
+		when(repository.findById(usuario.getCpf())).thenReturn(Optional.empty());
 
-		user1.setEndereco(endereco1);
+		Usuario metodoConsulta = service.consultaUsuarioPorId(usuario.getCpf(), false);
+		assertNull(metodoConsulta);
+	}
 
-		// User2
-		Usuario user2 = new Usuario();
-		user2.setNome("test");
-		user2.setCpf("12345678911");
-		user2.setSexo("testSexo");
-		user2.setNascimento(LocalDate.now());
+	@Test
+	public void consultaPaginadaUsuariosSucesso() throws RecursoNaoEncontradoException {
 
+		List<Usuario> list = Arrays.asList(getMockUsuario(), getMockOutroUsuario());
+		when(repository.findAll(any(Pageable.class))).thenReturn(new PageImpl<Usuario>(list));
 
-		Endereco endereco2 = new Endereco();
-		endereco2.setLogradouro("testeLogradouro");
-		endereco2.setNumero(1);
-		endereco2.setCidade("testeCidade");
-		endereco2.setUf("testeUf");
-
-		user2.setEndereco(endereco2);
-
-		List<Usuario> list = new ArrayList<Usuario>();
-		list.add(user1);
-		list.add(user2);
-		Mockito.when(repository.findAll(Mockito.any(Pageable.class))).thenReturn(new PageImpl<Usuario>(list));
-
-		Page<Usuario> pageable = service.ConsultaUsuarios(Pageable.ofSize(2));
+		Page<Usuario> pageable = service.consultaUsuariosPaginada(Pageable.ofSize(2));
 		assertNotNull(pageable);
 		assertEquals(pageable.getContent().size(), list.size());
 	}
 
 	@Test
-	public void alteraUsuarioSucesso() throws UsuarioNaoEncontradoException, UsuarioExistenteException {
+	public void alteraUsuarioSucesso() throws RecursoNaoEncontradoException, RecursoExistenteException {
 
-		Usuario user = new Usuario();
-		user.setNome("testNome");
-		user.setCpf("12345678910");
-		user.setSexo("testSexo");
-		//data
-		user.setNascimento(LocalDate.now());
+		AlteraUsuarioDto alteraUsuarioDto = getAlteraUsuarioDto();
+		Usuario usuario = getMockUsuario();
+		when(repository.findById(usuario.getCpf())).thenReturn(Optional.of(usuario));
+		when(repository.save(usuario)).thenReturn(usuario);
 
-		Endereco endereco1 = new Endereco();
-		endereco1.setLogradouro("testeLogradouro");
-		endereco1.setNumero(1);
-		endereco1.setCidade("testeCidade");
-		endereco1.setUf("testeUf");
-
-		user.setEndereco(endereco1);
-
-		AlteraUsuarioDto dto = new AlteraUsuarioDto();
-		dto.setNome("test");
-		dto.setNascimento(LocalDate.now());
-		dto.setSexo("test");
-
-		Mockito.when(repository.findById(user.getCpf())).thenReturn(Optional.of(user));
-		Mockito.doNothing().when(mapper).map(dto, user);
-		Mockito.when(repository.save(user)).thenReturn(user);
-
-		Usuario alteracao = service.alteraUsuario(dto, user.getCpf());
+		Usuario alteracao = service.alteraUsuario(alteraUsuarioDto, usuario.getCpf());
 		assertNotNull(alteracao);
+		assertEquals(usuario.getCpf(),alteracao.getCpf());
 	}
 
 	@Test
-	public void deletaUsuarioSucesso() throws UsuarioNaoEncontradoException {
+	public void alteraUsuarioException() throws RecursoNaoEncontradoException, RecursoExistenteException {
+		AlteraUsuarioDto alteraUsuarioDto = getAlteraUsuarioDto();
+		Usuario usuario = getMockUsuario();
 
-		Usuario user = new Usuario();
-		user.setNome("test");
-		user.setCpf("12345678910");
-		user.setSexo("testSexo");
-		user.setNascimento(LocalDate.now());
+		when(repository.findById(usuario.getCpf())).thenReturn(Optional.empty());
 
-		Endereco endereco = new Endereco();
-		endereco.setLogradouro("testLogradouro");
-		endereco.setNumero(1);
-		endereco.setCidade("testCidade");
-		endereco.setUf("testUf");
+		assertThatThrownBy(() -> {
+			service.alteraUsuario(alteraUsuarioDto, usuario.getCpf());
+		}).isInstanceOf(RecursoNaoEncontradoException.class)
+				.hasMessage(MensagemValidacao.getMensagemValidacao("validacao.excecao.usuario.nao.encontrado"));
+	}
 
-		user.setEndereco(endereco);
+		@Test
+	public void deletaUsuarioSucesso() throws RecursoNaoEncontradoException {
 
-		Mockito.when(repository.findById(user.getCpf())).thenReturn(Optional.of(user));
-		Mockito.doNothing().when(repository).delete(user);
+		Usuario usuario = getMockUsuario();
 
-		service.deletaUsuario(user.getCpf());
-		Mockito.verify(repository, Mockito.times(1)).delete(user);
+		when(repository.findById(usuario.getCpf())).thenReturn(Optional.of(usuario));
+		doNothing().when(repository).delete(usuario);
+
+		service.deletaUsuario(usuario.getCpf());
+		verify(repository, times(1)).delete(usuario);
 	}
 
 	@Test
-	public void buscaAvancada() throws UsuarioNaoEncontradoException {
+	public void deletaUsuarioException() throws RecursoNaoEncontradoException {
+		Usuario usuario = getMockUsuario();
+		when(repository.findById(usuario.getCpf())).thenReturn(Optional.empty());
 
-		BuscaAvancadaDto dto = new BuscaAvancadaDto();
-		dto.setCpf("12345678910");
-		dto.setNascimento(LocalDate.now());
-		dto.setSexo("testSexo");
-		dto.setCidade("testCidade");
-		dto.setUf("testUf");
+		assertThatThrownBy(() -> {
+			service.deletaUsuario(usuario.getCpf());
+					}).isInstanceOf(RecursoNaoEncontradoException.class)
+				.hasMessage(MensagemValidacao.getMensagemValidacao("validacao.excecao.usuario.nao.encontrado"));
+	}
 
-		Usuario user = new Usuario();
-		user.setCpf(dto.getCpf());
-		user.setSexo(dto.getSexo());
-		user.setNascimento(dto.getNascimento());
-		Endereco endereco = new Endereco();
-		endereco.setCidade(dto.getCidade());
-		endereco.setUf(dto.getUf());
-		user.setEndereco(endereco);
 
-		Example<Usuario> example = Example.of(user);
-		Mockito.when(repository.findAll(example)).thenReturn(Collections.singletonList(user));
-		List<Usuario> buscaAvancada = service.buscaAvancadaUsuario(dto);
+	@Test
+	public void buscaAvancadaSucesso() throws RecursoNaoEncontradoException {
+
+		BuscaAvancadaDto buscaAvancadaDto = getMockBuscaAvancadaDto();
+		Usuario usuario = getMockUsuario();
+		when(mapper.map( buscaAvancadaDto, Usuario.class)).thenReturn(usuario);
+		when(mapper.map(buscaAvancadaDto, Endereco.class)).thenReturn(usuario.getEndereco());
+
+		Example<Usuario> example = Example.of(usuario);
+		when(repository.findAll(example)).thenReturn(Collections.singletonList(usuario));
+		List<Usuario> buscaAvancada = service.buscaAvancadaUsuario(buscaAvancadaDto);
 		assertNotNull(buscaAvancada);
 	}
 
+	@Test
+	public void buscaAvancadaException() throws RecursoNaoEncontradoException {
+		BuscaAvancadaDto buscaAvancadaDto = new BuscaAvancadaDto();
+
+		assertThatThrownBy(() -> {
+			service.buscaAvancadaUsuario(buscaAvancadaDto);
+		}).isInstanceOf(FiltroException.class)
+				.hasMessage(MensagemValidacao.getMensagemValidacao("validacao.excecao.sem.filtro"));
+	}
 }

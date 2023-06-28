@@ -16,16 +16,18 @@ public class EnderecoDto {
 	@NotNull
 	@Size(max = 50, message = "Inválido, máximo de 50 caracteres")
 	private String cidade;
-	
-	@NotNull
-	@Size(min = 1, max = 20, message = "Inválido, tamanho deve ser 2 caracteres")
-	private String uf;
 
+	@NotNull
+	@Size(max = 8, message = "Inválido, tamanho deve ser 8 caracteres")
+	private String cep;
+
+	@NotNull
+	@Size(max = 2, message = "Inválido, tamanho deve ser 2 caracteres")
+	private String uf;
 
 	public EnderecoDto() {
 		
 	}
-	
 
 	public String getLogradouro() {
 		return logradouro;
@@ -57,8 +59,14 @@ public class EnderecoDto {
 
 	public void setUf(String uf) {
 		this.uf = uf;
-	}	
+	}
 
 
-	
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
 }

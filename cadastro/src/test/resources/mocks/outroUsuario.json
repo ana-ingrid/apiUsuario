@@ -1,0 +1,16 @@
+{
+  "nome": "Ana",
+  "cpf": "50256833211",
+  "sexo": "feminino",
+  "nascimento": "1979-05-15",
+
+  "endereco": {
+
+    "logradouro": "Rua das Palmas",
+    "numero": 222,
+    "cidade": "Belford roxo",
+    "uf": "rj"
+
+  }
+
+}

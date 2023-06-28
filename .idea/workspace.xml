@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="23118864-0809-4d16-9011-095e73a92493" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/1/017939f1fa3aae33ba70acc9143c1e50402f81ee" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/a/1a14025fba4e7da8603097242ee880732d7da512" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/7/271071d960a846d1aa5e8bf9a0820ff4d7e2ab56" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/c/2c9b6a4824d64e917eea0232929f26d693801a0b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/e/2e60ac5292a1161fe33d1da7e51336a47de05650" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/d/3d0f7ce73f3d00106d4c6e64416fc116fa2dbb9d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/8/5819c9583807bacffb85987b7930679cb192558d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/e/6ec18a9a3ca6a229d08da5349376366062826bf0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/f/6f9ca2a37558e46a84e400bda707f88f9aabcb5b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/f/8f14578758de93df74fe6b94a30f0414050825a9" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/8/98c14705924f44cec59422fcd2f38bf3ade2fb4b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/f/bfada1784a6c0bc7599cab8cf7b23a2fe9deacd8" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/a/daa0fb2271b21a1834857902b0140b5de76a9d87" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/1/e1814851ee3d1b3bc2a5523b2b5b345655943830" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/9/e9cbd0bf3f8a8a30b0c650d9ffb69663acd610bb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/e/fe5c63e1c35095daa0fbc2549b385a55353f8d70" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/1/017939f1fa3aae33ba70acc9143c1e50402f81ee" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/a/1a14025fba4e7da8603097242ee880732d7da512" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/7/271071d960a846d1aa5e8bf9a0820ff4d7e2ab56" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/c/2c9b6a4824d64e917eea0232929f26d693801a0b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/e/2e60ac5292a1161fe33d1da7e51336a47de05650" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/d/3d0f7ce73f3d00106d4c6e64416fc116fa2dbb9d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/8/5819c9583807bacffb85987b7930679cb192558d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/e/6ec18a9a3ca6a229d08da5349376366062826bf0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/f/6f9ca2a37558e46a84e400bda707f88f9aabcb5b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/f/8f14578758de93df74fe6b94a30f0414050825a9" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/8/98c14705924f44cec59422fcd2f38bf3ade2fb4b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/f/bfada1784a6c0bc7599cab8cf7b23a2fe9deacd8" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/a/daa0fb2271b21a1834857902b0140b5de76a9d87" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/1/e1814851ee3d1b3bc2a5523b2b5b345655943830" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/9/e9cbd0bf3f8a8a30b0c650d9ffb69663acd610bb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/e/fe5c63e1c35095daa0fbc2549b385a55353f8d70" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cadastro/src/test/resources/mocks/outroUsuario.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastro/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/CadastroApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/CadastroApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/config/ControlExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/controller/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/dto/BuscaAvancadaDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/dto/BuscaAvancadaDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/dto/CadastraUsuarioDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/dto/CadastraUsuarioDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/exception/UsuarioExistenteException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/exception/UsuarioNaoEncontradoException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/model/Endereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/model/Endereco.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/model/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/service/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastro/src/main/resources/MensagemValidacao.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/main/resources/MensagemValidacao.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastro/src/main/resources/db.migration/V1__create_initial_tables.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastro/src/test/java/br/com/cadastro/service/UsuarioServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/test/java/br/com/cadastro/service/UsuarioServiceTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2ONCjs2HghjxB0JBEPDqQJE2l4L" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Nova/OneDrive - NOVA TENDÊNCIA INF. LTDA/Documentos/Projetos/apiUsuario/cadastro",
+    "settings.editor.selected.configurable": "configurable.group.appearance"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Nova\OneDrive\Documentos\Projetos\apiUsuario-main\cadastro\src\main\resources\db\migration" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Nova\OneDrive - NOVA TENDÊNCIA INF. LTDA\Documentos\Projetos\apiUsuario\cadastro\src\main\java\br\com\cadastro\config" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.All in cadastro (2)">
+    <configuration name="All in cadastro (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cadastro" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in cadastro (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cadastro" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in cadastro" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cadastro" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UsuarioServiceTest.alteraUsuarioException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cadastro" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="br.com.cadastro.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="br.com.cadastro.service" />
+      <option name="MAIN_CLASS_NAME" value="br.com.cadastro.service.UsuarioServiceTest" />
+      <option name="METHOD_NAME" value="alteraUsuarioException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UsuarioServiceTest.cadastraUsuarioSucesso" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cadastro" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="br.com.cadastro.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="br.com.cadastro.service" />
+      <option name="MAIN_CLASS_NAME" value="br.com.cadastro.service.UsuarioServiceTest" />
+      <option name="METHOD_NAME" value="cadastraUsuarioSucesso" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.All in cadastro" />
+      <item itemvalue="JUnit.All in cadastro (1)" />
+      <item itemvalue="JUnit.UsuarioServiceTest.alteraUsuarioException" />
+      <item itemvalue="JUnit.UsuarioServiceTest.cadastraUsuarioSucesso" />
+      <item itemvalue="JUnit.All in cadastro (2)" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in cadastro (2)" />
+        <item itemvalue="JUnit.All in cadastro (1)" />
+        <item itemvalue="JUnit.UsuarioServiceTest.cadastraUsuarioSucesso" />
+        <item itemvalue="JUnit.All in cadastro" />
+        <item itemvalue="JUnit.UsuarioServiceTest.alteraUsuarioException" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="23118864-0809-4d16-9011-095e73a92493" name="Changes" comment="" />
+      <created>1681391790494</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1681391790494</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/apiUsuario$All_in_cadastro.ic" NAME="All in cadastro Coverage Results" MODIFIED="1685983853570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/apiUsuario$All_in_cadastro__2_.ic" NAME="All in cadastro (2) Coverage Results" MODIFIED="1685986230539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

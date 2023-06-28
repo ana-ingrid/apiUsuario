@@ -9,57 +9,76 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class BuscaAvancadaDto {
 
-	@CPF
-	private String cpf;
-	
-	@JsonFormat(pattern="yyyy-MM-dd")
-	private LocalDate Nascimento;
-	
-	private String sexo;
-	
-	private String cidade;
-	
-	private String uf;
-	
-	
-	public LocalDate getNascimento() {
-		return Nascimento;
-	}
-	
-	public void setNascimento(LocalDate nascimento) {
-		Nascimento = nascimento;
-	}
-	
-	public String getSexo() {
-		return sexo;
-	}
-	
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
-	
-	public String getUf() {
-		return uf;
-	}
+    @CPF
+    private String cpf;
 
-	public void setUf(String uf) {
-		this.uf = uf;
-	}
+    private String nome;
 
-	public String getCidade() {
-		return cidade;
-	}
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate nascimento;
 
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
+    private String sexo;
 
-	public String getCpf() {
-		return cpf;
-	}
+    private String cidade;
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	
+    private String cep;
+
+    private String uf;
+
+
+    public LocalDate getNascimento() {
+        return nascimento;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public void setNascimento(LocalDate nascimento) {
+        this.nascimento = nascimento;
+    }
 }

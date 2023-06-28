@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name="tb_usuario")
+@Table(name="tb_usuarios")
 public class Usuario {
 
 	@Column
@@ -26,7 +26,7 @@ public class Usuario {
 	@Column
 	private String sexo;
 	
-	@Column(name="dt_nascimento")
+	@Column(name="nascimento")
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private LocalDate nascimento;
 	

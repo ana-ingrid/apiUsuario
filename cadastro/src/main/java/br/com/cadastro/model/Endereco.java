@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tb_endereco")
+@Table(name="tb_enderecos")
 public class Endereco {
 
 	@Id
@@ -23,7 +23,10 @@ public class Endereco {
 	
 	@Column
 	private String cidade;
-	
+
+	@Column
+	private String cep;
+
 	@Column
 	private String uf;
 	
@@ -58,5 +61,12 @@ public class Endereco {
 	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
-	
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getCep() {
+		return cep;
+	}
 }
