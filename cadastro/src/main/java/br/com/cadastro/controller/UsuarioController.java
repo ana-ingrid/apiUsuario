@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import br.com.cadastro.config.ClienteCep;
+import br.com.cadastro.dto.EnderecoDto;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -31,15 +33,17 @@ import br.com.cadastro.service.UsuarioService;
 
 @RestController
 @RequestMapping("/usuarios")
- public class UsuarioController {
+ public class UsuarioController implements ResponseEntityStatus {
 
 	@Autowired
 	private UsuarioService service;
+	@Autowired
+	private ClienteCep clienteCep;
 
 	@ApiOperation("Consulta Usuário por CPF")
 	@GetMapping("/{cpf}")
 	public ResponseEntity<Usuario> consultaUsuario(@PathVariable String cpf) throws RecursoNaoEncontradoException {
-		return ResponseEntity.status(200).body(service.consultaUsuarioPorId(cpf, true));
+		return ResponseEntity.ok(service.consultaUsuarioPorId(cpf, true));
 	}
 
 	@ApiOperation("Consulta de Todos os Usuários com Paginação")
@@ -73,4 +77,10 @@ import br.com.cadastro.service.UsuarioService;
 	public ResponseEntity<List<Usuario>> buscaAvancadaUsuario(BuscaAvancadaDto buscaAvancadaDto) throws RecursoNaoEncontradoException {
 		return ResponseEntity.status(200).body(service.buscaAvancadaUsuario(buscaAvancadaDto));
 	}
+
+	@GetMapping("/cep/{cep}")
+	public EnderecoDto validacaoCep(@PathVariable("cep") String cep) {
+		return clienteCep.getCepInfo(cep);
+	}
+
 }
