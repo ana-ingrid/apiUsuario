@@ -1,7 +1,9 @@
 {
+  "nome": "Fulano",
   "cpf": "93267706564",
   "sexo": "feminino",
   "nascimento": "1979-05-15",
   "cidade": "Belford roxo",
+  "cep": "20211295",
   "uf": "rj"
 }
