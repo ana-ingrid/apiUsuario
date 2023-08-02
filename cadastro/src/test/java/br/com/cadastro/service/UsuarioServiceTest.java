@@ -1,16 +1,16 @@
 package br.com.cadastro.service;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.when;
-
-import java.util.*;
-
+import Util.MockJson;
 import br.com.cadastro.config.MensagemValidacao;
+import br.com.cadastro.dto.AlteraUsuarioDto;
+import br.com.cadastro.dto.BuscaAvancadaDto;
+import br.com.cadastro.dto.CadastraUsuarioDto;
 import br.com.cadastro.exception.FiltroException;
-import classe.ObjetoJson;
+import br.com.cadastro.exception.RecursoExistenteException;
+import br.com.cadastro.exception.RecursoNaoEncontradoException;
+import br.com.cadastro.model.Endereco;
+import br.com.cadastro.model.Usuario;
+import br.com.cadastro.repository.UsuarioRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -20,31 +20,23 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-
-import br.com.cadastro.dto.AlteraUsuarioDto;
-import br.com.cadastro.dto.BuscaAvancadaDto;
-import br.com.cadastro.dto.CadastraUsuarioDto;
-import br.com.cadastro.exception.RecursoExistenteException;
-import br.com.cadastro.exception.RecursoNaoEncontradoException;
-import br.com.cadastro.model.Endereco;
-import br.com.cadastro.model.Usuario;
-import br.com.cadastro.repository.UsuarioRepository;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+
+import static Util.MockJson.*;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
 public class UsuarioServiceTest {
 
-	protected static final String USUARIO_JSON = "usuario.json";
-
-	protected static final String CADASTRA_USUARIO_DTO_JSON = "cadastraUsuarioDto.json";
-
-	protected static final String ALTERA_USUARIO_DTO_JSON = "alteraUsuarioDto.json";
-
-	protected static final String OUTRO_USUARIO_JSON = "outroUsuario.json";
-
-	protected static final String BUSCA_AVANCADA_DTO_JSON = "buscaAvancadaDto.json";
-
-	protected static final String USUARIO_PATH = "/mocks";
 
 	@InjectMocks
 	private UsuarioService service;
@@ -55,30 +47,9 @@ public class UsuarioServiceTest {
 	@Mock
 	private ModelMapper mapper;
 
-
-	protected static Usuario getMockUsuario() {
-		return ObjetoJson.getMockObject(USUARIO_PATH, USUARIO_JSON, Usuario.class);
-	}
-
-	protected static Usuario getMockOutroUsuario() {
-		return ObjetoJson.getMockObject(USUARIO_PATH, OUTRO_USUARIO_JSON, Usuario.class);
-	}
-
-	protected static CadastraUsuarioDto getMockCadastraUsuarioDto() {
-		return ObjetoJson.getMockObject(USUARIO_PATH, CADASTRA_USUARIO_DTO_JSON, CadastraUsuarioDto.class);
-	}
-
-	protected static AlteraUsuarioDto getAlteraUsuarioDto() {
-		return ObjetoJson.getMockObject(USUARIO_PATH, ALTERA_USUARIO_DTO_JSON, AlteraUsuarioDto.class);
-	}
-
-	protected static BuscaAvancadaDto getMockBuscaAvancadaDto() {
-		return ObjetoJson.getMockObject(USUARIO_PATH, BUSCA_AVANCADA_DTO_JSON, BuscaAvancadaDto.class);
-	}
-
 	@Test
 	public void cadastraUsuarioSucesso() throws RecursoExistenteException {
-		CadastraUsuarioDto usuarioDto = getMockCadastraUsuarioDto();
+		CadastraUsuarioDto usuarioDto = MockJson.getMockCadastraUsuarioDto();
 		Usuario usuario = getMockUsuario();
 
 		when(repository.findById(usuarioDto.getCpf())).thenReturn(Optional.empty());
@@ -90,7 +61,7 @@ public class UsuarioServiceTest {
 	}
 	@Test
 	public void cadastraUsuarioException() {
-		CadastraUsuarioDto usuarioDto = getMockCadastraUsuarioDto();
+		CadastraUsuarioDto usuarioDto = MockJson.getMockCadastraUsuarioDto();
 		Usuario usuario = getMockUsuario();
 		when(repository.findById(usuarioDto.getCpf())).thenReturn(Optional.of(usuario));
 

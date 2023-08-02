@@ -1,5 +1,6 @@
 package br.com.cadastro.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
@@ -14,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name="tb_usuarios")
-public class Usuario {
+public class Usuario implements Serializable {
 
 	@Column
 	private String nome;
@@ -27,7 +28,7 @@ public class Usuario {
 	private String sexo;
 	
 	@Column(name="nascimento")
-	@JsonFormat(pattern="yyyy-MM-dd")
+//	@JsonFormat(pattern="yyyy-MM-dd")
 	private LocalDate nascimento;
 	
 	@OneToOne(cascade=CascadeType.ALL)

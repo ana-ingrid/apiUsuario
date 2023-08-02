@@ -2,6 +2,7 @@ package br.com.cadastro.controller;
 
 import java.util.List;
 
+import br.com.cadastro.exception.ErroConversaoException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -30,4 +31,10 @@ public class ControlExceptionHandler {
 		List<ObjectError> erros = mException.getAllErrors();
 		return ResponseEntity.status(400).body(erros.get(0).getDefaultMessage());
 	}
+
+	@ExceptionHandler(value = {ErroConversaoException.class })
+	protected ResponseEntity<Object> ErroConversao (ErroConversaoException uException, WebRequest request) {
+		return ResponseEntity.status(500).body(uException.getMessage());
+	}
+
 }

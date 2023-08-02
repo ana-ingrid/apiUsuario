@@ -1,4 +1,5 @@
 package br.com.cadastro.dto;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.validation.constraints.NotNull;
