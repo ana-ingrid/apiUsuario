@@ -1,8 +1,8 @@
 package br.com.cadastro.controller;
 
-import java.util.List;
-
 import br.com.cadastro.exception.ErroConversaoException;
+import br.com.cadastro.exception.RecursoExistenteException;
+import br.com.cadastro.exception.RecursoNaoEncontradoException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
-import br.com.cadastro.exception.RecursoExistenteException;
-import br.com.cadastro.exception.RecursoNaoEncontradoException;
+import java.util.List;
 
 @ControllerAdvice
 public class ControlExceptionHandler {
@@ -32,7 +31,7 @@ public class ControlExceptionHandler {
 		return ResponseEntity.status(400).body(erros.get(0).getDefaultMessage());
 	}
 
-	@ExceptionHandler(value = {ErroConversaoException.class })
+	@ExceptionHandler(value = {ErroConversaoException.class})
 	protected ResponseEntity<Object> ErroConversao (ErroConversaoException uException, WebRequest request) {
 		return ResponseEntity.status(500).body(uException.getMessage());
 	}

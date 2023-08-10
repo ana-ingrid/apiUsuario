@@ -1,10 +1,9 @@
 package br.com.cadastro.dto;
 
-import java.time.LocalDate;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.validator.constraints.br.CPF;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDate;
 
 
 public class BuscaAvancadaDto {

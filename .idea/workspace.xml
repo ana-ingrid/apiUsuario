@@ -6,16 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="23118864-0809-4d16-9011-095e73a92493" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/controller/ControlExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/controller/ControlExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/dto/AlteraUsuarioDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/dto/AlteraUsuarioDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/exception/FiltroException.java" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/exception/FiltroException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/exception/RecursoExistenteException.java" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/exception/RecursoExistenteException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/exception/RecursoNaoEncontradoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/exception/RecursoNaoEncontradoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/model/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastro/src/main/resources/MensagemValidacao.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/main/resources/MensagemValidacao.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/main/java/br/com/cadastro/service/UsuarioService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cadastro/src/test/java/br/com/cadastro/cadastro/TestMockMvc.java" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/test/java/br/com/cadastro/cadastro/TestMockMvc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cadastro/src/test/java/br/com/cadastro/service/UsuarioServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/test/java/br/com/cadastro/service/UsuarioServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastro/src/test/java/classe/ObjetoJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/cadastro/src/test/java/Util/ObjetoJson.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,36 +128,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestMockMvc.testConsultaUsuarioSucesso" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UsuarioServiceTest.cadastraUsuarioException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cadastro" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="br.com.cadastro.cadastro.*" />
+          <option name="PATTERN" value="br.com.cadastro.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="br.com.cadastro.cadastro" />
-      <option name="MAIN_CLASS_NAME" value="br.com.cadastro.cadastro.TestMockMvc" />
-      <option name="METHOD_NAME" value="testConsultaUsuarioSucesso" />
+      <option name="PACKAGE_NAME" value="br.com.cadastro.service" />
+      <option name="MAIN_CLASS_NAME" value="br.com.cadastro.service.UsuarioServiceTest" />
+      <option name="METHOD_NAME" value="cadastraUsuarioException" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.UsuarioServiceTest.cadastraUsuarioException" />
       <item itemvalue="JUnit.TestMockMvc" />
       <item itemvalue="JUnit.TestMockMvc.alteraUsuarioErro" />
       <item itemvalue="JUnit.TestMockMvc.deletaUsuarioErro" />
       <item itemvalue="JUnit.TestMockMvc.deletaUsuarioSucesso" />
-      <item itemvalue="JUnit.TestMockMvc.testConsultaUsuarioSucesso" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TestMockMvc" />
+        <item itemvalue="JUnit.UsuarioServiceTest.cadastraUsuarioException" />
         <item itemvalue="JUnit.TestMockMvc.deletaUsuarioErro" />
         <item itemvalue="JUnit.TestMockMvc.deletaUsuarioSucesso" />
         <item itemvalue="JUnit.TestMockMvc.alteraUsuarioErro" />
-        <item itemvalue="JUnit.TestMockMvc.testConsultaUsuarioSucesso" />
       </list>
     </recent_temporary>
   </component>

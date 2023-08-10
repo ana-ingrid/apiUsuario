@@ -1,8 +1,8 @@
 package br.com.cadastro.dto;
 
-import javax.validation.constraints.Size;
-
 import com.sun.istack.NotNull;
+
+import javax.validation.constraints.Size;
 
 public class EnderecoDto {
 	

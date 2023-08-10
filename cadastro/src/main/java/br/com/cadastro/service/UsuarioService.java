@@ -11,7 +11,6 @@ import br.com.cadastro.model.Endereco;
 import br.com.cadastro.model.Usuario;
 import br.com.cadastro.repository.UsuarioRepository;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,8 +24,8 @@ import static br.com.cadastro.config.MensagemValidacao.getMensagemValidacao;
 @Service
 public class UsuarioService {
 
-    private UsuarioRepository repository;
-    private ModelMapper modelMapper;
+    private final UsuarioRepository repository;
+    private final ModelMapper modelMapper;
 
     public UsuarioService(UsuarioRepository repository, ModelMapper modelMapper) {
         this.repository = repository;

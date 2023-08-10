@@ -2,7 +2,6 @@ package br.com.cadastro.service;
 
 import br.com.cadastro.config.ClienteCep;
 import br.com.cadastro.dto.EnderecoDto;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 @Service

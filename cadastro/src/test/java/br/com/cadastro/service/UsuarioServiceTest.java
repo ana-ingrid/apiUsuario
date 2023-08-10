@@ -65,9 +65,7 @@ public class UsuarioServiceTest {
 		Usuario usuario = getMockUsuario();
 		when(repository.findById(usuarioDto.getCpf())).thenReturn(Optional.of(usuario));
 
-		assertThatThrownBy(() -> {
-			service.cadastraUsuario(usuarioDto);
-		}).isInstanceOf(RecursoExistenteException.class)
+		assertThatThrownBy(() -> service.cadastraUsuario(usuarioDto)).isInstanceOf(RecursoExistenteException.class)
 				.hasMessage(MensagemValidacao.getMensagemValidacao("validacao.excecao.usuario.encontrado"));
 	}
 
@@ -86,9 +84,7 @@ public class UsuarioServiceTest {
 		Usuario usuario = getMockUsuario();
 		when(repository.findById(usuario.getCpf())).thenReturn(Optional.empty());
 
-		assertThatThrownBy(() -> {
-			service.consultaUsuarioPorId(usuario.getCpf(), true);
-		}).isInstanceOf(RecursoNaoEncontradoException.class)
+		assertThatThrownBy(() -> service.consultaUsuarioPorId(usuario.getCpf(), true)).isInstanceOf(RecursoNaoEncontradoException.class)
 				.hasMessage(MensagemValidacao.getMensagemValidacao("validacao.excecao.usuario.nao.encontrado"));
 	}
 
@@ -105,7 +101,7 @@ public class UsuarioServiceTest {
 	public void consultaPaginadaUsuariosSucesso() throws RecursoNaoEncontradoException {
 
 		List<Usuario> list = Arrays.asList(getMockUsuario(), getMockOutroUsuario());
-		when(repository.findAll(any(Pageable.class))).thenReturn(new PageImpl<Usuario>(list));
+		when(repository.findAll(any(Pageable.class))).thenReturn(new PageImpl<>(list));
 
 		Page<Usuario> pageable = service.consultaUsuariosPaginada(Pageable.ofSize(2));
 		assertNotNull(pageable);
@@ -113,7 +109,7 @@ public class UsuarioServiceTest {
 	}
 
 	@Test
-	public void alteraUsuarioSucesso() throws RecursoNaoEncontradoException, RecursoExistenteException {
+	public void alteraUsuarioSucesso() throws RecursoNaoEncontradoException {
 
 		AlteraUsuarioDto alteraUsuarioDto = getAlteraUsuarioDto();
 		Usuario usuario = getMockUsuario();
@@ -126,15 +122,13 @@ public class UsuarioServiceTest {
 	}
 
 	@Test
-	public void alteraUsuarioException() throws RecursoNaoEncontradoException, RecursoExistenteException {
+	public void alteraUsuarioException() throws RecursoNaoEncontradoException {
 		AlteraUsuarioDto alteraUsuarioDto = getAlteraUsuarioDto();
 		Usuario usuario = getMockUsuario();
 
 		when(repository.findById(usuario.getCpf())).thenReturn(Optional.empty());
 
-		assertThatThrownBy(() -> {
-			service.alteraUsuario(alteraUsuarioDto, usuario.getCpf());
-		}).isInstanceOf(RecursoNaoEncontradoException.class)
+		assertThatThrownBy(() -> service.alteraUsuario(alteraUsuarioDto, usuario.getCpf())).isInstanceOf(RecursoNaoEncontradoException.class)
 				.hasMessage(MensagemValidacao.getMensagemValidacao("validacao.excecao.usuario.nao.encontrado"));
 	}
 
@@ -155,9 +149,7 @@ public class UsuarioServiceTest {
 		Usuario usuario = getMockUsuario();
 		when(repository.findById(usuario.getCpf())).thenReturn(Optional.empty());
 
-		assertThatThrownBy(() -> {
-			service.deletaUsuario(usuario.getCpf());
-					}).isInstanceOf(RecursoNaoEncontradoException.class)
+		assertThatThrownBy(() -> service.deletaUsuario(usuario.getCpf())).isInstanceOf(RecursoNaoEncontradoException.class)
 				.hasMessage(MensagemValidacao.getMensagemValidacao("validacao.excecao.usuario.nao.encontrado"));
 	}
 
@@ -180,9 +172,7 @@ public class UsuarioServiceTest {
 	public void buscaAvancadaException() throws RecursoNaoEncontradoException {
 		BuscaAvancadaDto buscaAvancadaDto = new BuscaAvancadaDto();
 
-		assertThatThrownBy(() -> {
-			service.buscaAvancadaUsuario(buscaAvancadaDto);
-		}).isInstanceOf(FiltroException.class)
+		assertThatThrownBy(() -> service.buscaAvancadaUsuario(buscaAvancadaDto)).isInstanceOf(FiltroException.class)
 				.hasMessage(MensagemValidacao.getMensagemValidacao("validacao.excecao.sem.filtro"));
 	}
 }

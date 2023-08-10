@@ -1,45 +1,39 @@
 package br.com.cadastro.cadastro;
 
-import Util.ConverterUtil;
-import Util.MockJson;
 import br.com.cadastro.controller.UsuarioController;
 import br.com.cadastro.dto.AlteraUsuarioDto;
 import br.com.cadastro.dto.CadastraUsuarioDto;
 import br.com.cadastro.exception.RecursoExistenteException;
 import br.com.cadastro.exception.RecursoNaoEncontradoException;
-import br.com.cadastro.model.Usuario;
 import br.com.cadastro.service.CepService;
 import br.com.cadastro.service.UsuarioService;
-import Util.ObjetoJson;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static Util.ConverterUtil.conversaoJson;
 import static Util.MockJson.*;
-import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(UsuarioController.class)
 class TestMockMvc {
 
     @Autowired
-    private MockMvc mockMvc;
+    protected MockMvc mockMvc;
 
     @MockBean
-    private UsuarioService usuarioService;
+    protected UsuarioService usuarioService;
 
     @MockBean
-    private CepService cepService;
+    protected CepService cepSer1vice;
 
     @Test
     void testConsultaUsuarioSucesso() throws Exception {
@@ -69,7 +63,7 @@ class TestMockMvc {
     }
 
     @Test
-    void TestCadastroUsuarioExistente() throws Exception {
+    void testCadastroUsuarioExistente() throws Exception {
         when(usuarioService.cadastraUsuario(any(CadastraUsuarioDto.class)))
                 .thenReturn(getMockUsuario())
                 .thenThrow(RecursoExistenteException.class);
@@ -90,7 +84,7 @@ class TestMockMvc {
     }
 
     @Test
-    void alteraUsuarioSucesso() throws Exception {
+    void testAlteraUsuarioSucesso() throws Exception {
 
         AlteraUsuarioDto alteraUsuarioDto = getAlteraUsuarioDto();
         String mockAlteraUsuarioDTO = conversaoJson(alteraUsuarioDto);
@@ -105,8 +99,7 @@ class TestMockMvc {
     }
 
     @Test
-    void alteraUsuarioErro() throws Exception {
-        AlteraUsuarioDto alteraUsuarioDto = getAlteraUsuarioDto();
+    void testAlteraUsuarioErro() throws Exception {
         String mockAlteraUsuarioDTO = conversaoJson(getAlteraUsuarioDto());
 
         when(usuarioService.alteraUsuario(any(), anyString())).thenThrow(RecursoNaoEncontradoException.class);
@@ -119,7 +112,7 @@ class TestMockMvc {
     }
 
     @Test
-    void deletaUsuarioSucesso() throws Exception {
+    void testDeletaUsuarioSucesso() throws Exception {
         doNothing().when(usuarioService).deletaUsuario("cpf");
 
         this.mockMvc.perform(delete("/usuarios/cpf"))
@@ -128,7 +121,7 @@ class TestMockMvc {
     }
 
     @Test
-    void deletaUsuarioErro() throws Exception {
+    void testDeletaUsuarioErro() throws Exception {
         doThrow(RecursoNaoEncontradoException.class).when(usuarioService).deletaUsuario("cpf");
         this.mockMvc.perform(delete("/usuarios/cpf"))
                 .andDo(print())
