@@ -4,7 +4,7 @@ import com.sun.istack.NotNull;
 
 import javax.validation.constraints.Size;
 
-public class EnderecoDto {
+public class EnderecoDTO {
 	
 	@NotNull
 	@Size(max = 50, message = "Inválido, máximo de 100 caracteres")
@@ -25,7 +25,7 @@ public class EnderecoDto {
 	@Size(max = 2, message = "Inválido, tamanho deve ser 2 caracteres")
 	private String uf;
 
-	public EnderecoDto() {
+	public EnderecoDTO() {
 		
 	}
 

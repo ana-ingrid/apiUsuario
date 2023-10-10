@@ -1,8 +1,8 @@
 package br.com.cadastro.cadastro;
 
 import br.com.cadastro.controller.UsuarioController;
-import br.com.cadastro.dto.AlteraUsuarioDto;
-import br.com.cadastro.dto.CadastraUsuarioDto;
+import br.com.cadastro.dto.AlteraUsuarioDTO;
+import br.com.cadastro.dto.CadastraUsuarioDTO;
 import br.com.cadastro.exception.RecursoExistenteException;
 import br.com.cadastro.exception.RecursoNaoEncontradoException;
 import br.com.cadastro.service.CepService;
@@ -51,7 +51,7 @@ class TestMockMvc {
 
     @Test
     void testCadastroUsuarioSucesso() throws Exception {
-        when(usuarioService.cadastraUsuario(any(CadastraUsuarioDto.class))).thenReturn(getMockUsuario());
+        when(usuarioService.cadastraUsuario(any(CadastraUsuarioDTO.class))).thenReturn(getMockUsuario());
 
         String mockCadastraUsuarioDto = conversaoJson(getMockCadastraUsuarioDto());
 
@@ -64,7 +64,7 @@ class TestMockMvc {
 
     @Test
     void testCadastroUsuarioExistente() throws Exception {
-        when(usuarioService.cadastraUsuario(any(CadastraUsuarioDto.class)))
+        when(usuarioService.cadastraUsuario(any(CadastraUsuarioDTO.class)))
                 .thenReturn(getMockUsuario())
                 .thenThrow(RecursoExistenteException.class);
 
@@ -86,7 +86,7 @@ class TestMockMvc {
     @Test
     void testAlteraUsuarioSucesso() throws Exception {
 
-        AlteraUsuarioDto alteraUsuarioDto = getAlteraUsuarioDto();
+        AlteraUsuarioDTO alteraUsuarioDto = getAlteraUsuarioDto();
         String mockAlteraUsuarioDTO = conversaoJson(alteraUsuarioDto);
 
         when(usuarioService.alteraUsuario(any(), anyString())).thenReturn(getMockUsuario());

@@ -1,7 +1,7 @@
 package br.com.cadastro.service;
 
-import br.com.cadastro.config.ClienteCep;
-import br.com.cadastro.dto.EnderecoDto;
+import br.com.cadastro.util.ClienteCep;
+import br.com.cadastro.dto.EnderecoDTO;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +13,7 @@ public class CepService {
         this.feignClient = feignClient;
     }
 
-    public EnderecoDto dadosCep(String cep) {
+    public EnderecoDTO dadosCep(String cep) {
         return feignClient.getCepInfo(cep);
     }
 

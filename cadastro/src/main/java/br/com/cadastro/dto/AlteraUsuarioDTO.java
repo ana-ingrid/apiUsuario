@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 
 
-public class AlteraUsuarioDto {
+public class AlteraUsuarioDTO {
 
 	@NotNull(message="Nome obrigatório")
 	private String nome;
@@ -21,7 +21,7 @@ public class AlteraUsuarioDto {
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private LocalDate nascimento;
 	
-	private EnderecoDto endereco;
+	private EnderecoDTO endereco;
 
 	public String getNome() {
 		return nome;
@@ -30,10 +30,10 @@ public class AlteraUsuarioDto {
 		this.nome = nome;
 	}
 
-	public EnderecoDto getEndereco() {
+	public EnderecoDTO getEndereco() {
 		return endereco;
 	}
-	public void setEndereco(EnderecoDto endereco) {
+	public void setEndereco(EnderecoDTO endereco) {
 		this.endereco = endereco;
 	}
 	public String getSexo() {

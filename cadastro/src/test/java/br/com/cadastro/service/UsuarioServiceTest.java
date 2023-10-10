@@ -2,9 +2,9 @@ package br.com.cadastro.service;
 
 import Util.MockJson;
 import br.com.cadastro.config.MensagemValidacao;
-import br.com.cadastro.dto.AlteraUsuarioDto;
-import br.com.cadastro.dto.BuscaAvancadaDto;
-import br.com.cadastro.dto.CadastraUsuarioDto;
+import br.com.cadastro.dto.AlteraUsuarioDTO;
+import br.com.cadastro.dto.BuscaAvancadaDTO;
+import br.com.cadastro.dto.CadastraUsuarioDTO;
 import br.com.cadastro.exception.FiltroException;
 import br.com.cadastro.exception.RecursoExistenteException;
 import br.com.cadastro.exception.RecursoNaoEncontradoException;
@@ -49,7 +49,7 @@ public class UsuarioServiceTest {
 
 	@Test
 	public void cadastraUsuarioSucesso() throws RecursoExistenteException {
-		CadastraUsuarioDto usuarioDto = MockJson.getMockCadastraUsuarioDto();
+		CadastraUsuarioDTO usuarioDto = MockJson.getMockCadastraUsuarioDto();
 		Usuario usuario = getMockUsuario();
 
 		when(repository.findById(usuarioDto.getCpf())).thenReturn(Optional.empty());
@@ -61,7 +61,7 @@ public class UsuarioServiceTest {
 	}
 	@Test
 	public void cadastraUsuarioException() {
-		CadastraUsuarioDto usuarioDto = MockJson.getMockCadastraUsuarioDto();
+		CadastraUsuarioDTO usuarioDto = MockJson.getMockCadastraUsuarioDto();
 		Usuario usuario = getMockUsuario();
 		when(repository.findById(usuarioDto.getCpf())).thenReturn(Optional.of(usuario));
 
@@ -111,7 +111,7 @@ public class UsuarioServiceTest {
 	@Test
 	public void alteraUsuarioSucesso() throws RecursoNaoEncontradoException {
 
-		AlteraUsuarioDto alteraUsuarioDto = getAlteraUsuarioDto();
+		AlteraUsuarioDTO alteraUsuarioDto = getAlteraUsuarioDto();
 		Usuario usuario = getMockUsuario();
 		when(repository.findById(usuario.getCpf())).thenReturn(Optional.of(usuario));
 		when(repository.save(usuario)).thenReturn(usuario);
@@ -123,7 +123,7 @@ public class UsuarioServiceTest {
 
 	@Test
 	public void alteraUsuarioException() throws RecursoNaoEncontradoException {
-		AlteraUsuarioDto alteraUsuarioDto = getAlteraUsuarioDto();
+		AlteraUsuarioDTO alteraUsuarioDto = getAlteraUsuarioDto();
 		Usuario usuario = getMockUsuario();
 
 		when(repository.findById(usuario.getCpf())).thenReturn(Optional.empty());
@@ -157,7 +157,7 @@ public class UsuarioServiceTest {
 	@Test
 	public void buscaAvancadaSucesso() throws RecursoNaoEncontradoException {
 
-		BuscaAvancadaDto buscaAvancadaDto = getMockBuscaAvancadaDto();
+		BuscaAvancadaDTO buscaAvancadaDto = getMockBuscaAvancadaDto();
 		Usuario usuario = getMockUsuario();
 		when(mapper.map( buscaAvancadaDto, Usuario.class)).thenReturn(usuario);
 		when(mapper.map(buscaAvancadaDto, Endereco.class)).thenReturn(usuario.getEndereco());
@@ -170,7 +170,7 @@ public class UsuarioServiceTest {
 
 	@Test
 	public void buscaAvancadaException() throws RecursoNaoEncontradoException {
-		BuscaAvancadaDto buscaAvancadaDto = new BuscaAvancadaDto();
+		BuscaAvancadaDTO buscaAvancadaDto = new BuscaAvancadaDTO();
 
 		assertThatThrownBy(() -> service.buscaAvancadaUsuario(buscaAvancadaDto)).isInstanceOf(FiltroException.class)
 				.hasMessage(MensagemValidacao.getMensagemValidacao("validacao.excecao.sem.filtro"));

@@ -1,9 +1,9 @@
 package br.com.cadastro.service;
 
 import br.com.cadastro.config.MensagemValidacao;
-import br.com.cadastro.dto.AlteraUsuarioDto;
-import br.com.cadastro.dto.BuscaAvancadaDto;
-import br.com.cadastro.dto.CadastraUsuarioDto;
+import br.com.cadastro.dto.AlteraUsuarioDTO;
+import br.com.cadastro.dto.BuscaAvancadaDTO;
+import br.com.cadastro.dto.CadastraUsuarioDTO;
 import br.com.cadastro.exception.FiltroException;
 import br.com.cadastro.exception.RecursoExistenteException;
 import br.com.cadastro.exception.RecursoNaoEncontradoException;
@@ -41,7 +41,7 @@ public class UsuarioService {
                 });
     }
 
-    public Usuario cadastraUsuario(CadastraUsuarioDto cadastraUsuarioDto) throws RecursoExistenteException {
+    public Usuario cadastraUsuario(CadastraUsuarioDTO cadastraUsuarioDto) throws RecursoExistenteException {
         if (Objects.nonNull(consultaUsuarioPorId(cadastraUsuarioDto.getCpf(), false))) {
             throw new RecursoExistenteException(MensagemValidacao.getMensagemValidacao("validacao.excecao.usuario.encontrado"));
         }
@@ -54,7 +54,7 @@ public class UsuarioService {
         return repository.findAll(pageable);
     }
 
-    public Usuario alteraUsuario(AlteraUsuarioDto alteraUsuarioDto, String cpf) throws RecursoNaoEncontradoException {
+    public Usuario alteraUsuario(AlteraUsuarioDTO alteraUsuarioDto, String cpf) throws RecursoNaoEncontradoException {
         Usuario user = consultaUsuarioPorId(cpf, true);
         modelMapper.map(alteraUsuarioDto, user);
         return repository.save(user);
@@ -65,7 +65,7 @@ public class UsuarioService {
         repository.delete(user);
     }
 
-    public List<Usuario> buscaAvancadaUsuario(BuscaAvancadaDto buscaAvancadaDto) throws RecursoNaoEncontradoException {
+    public List<Usuario> buscaAvancadaUsuario(BuscaAvancadaDTO buscaAvancadaDto) throws RecursoNaoEncontradoException {
 
         if (Objects.isNull(buscaAvancadaDto.getCpf()) && Objects.isNull(buscaAvancadaDto.getNascimento()) &&
                 Objects.isNull(buscaAvancadaDto.getSexo()) && Objects.isNull(buscaAvancadaDto.getNome())

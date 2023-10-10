@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.br.CPF;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 
-public class CadastraUsuarioDto {
+public class CadastraUsuarioDTO {
 
     @NotNull(message = "Nome Obrigatório")
     private String nome;
@@ -26,17 +26,17 @@ public class CadastraUsuarioDto {
     private LocalDate nascimento;
 
     @NotNull(message = "Endereço obrigatório")
-    private EnderecoDto endereco;
+    private EnderecoDTO endereco;
 
     public String getNome() {
         return nome;
     }
 
-    public EnderecoDto getEndereco() {
+    public EnderecoDTO getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(EnderecoDto endereco) {
+    public void setEndereco(EnderecoDTO endereco) {
         this.endereco = endereco;
     }
 

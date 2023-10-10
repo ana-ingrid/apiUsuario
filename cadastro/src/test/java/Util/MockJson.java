@@ -1,8 +1,8 @@
 package Util;
 
-import br.com.cadastro.dto.AlteraUsuarioDto;
-import br.com.cadastro.dto.BuscaAvancadaDto;
-import br.com.cadastro.dto.CadastraUsuarioDto;
+import br.com.cadastro.dto.AlteraUsuarioDTO;
+import br.com.cadastro.dto.BuscaAvancadaDTO;
+import br.com.cadastro.dto.CadastraUsuarioDTO;
 import br.com.cadastro.model.Usuario;
 
 public class MockJson {
@@ -24,16 +24,16 @@ public class MockJson {
         return ObjetoJson.getMockObject(USUARIO_PATH, OUTRO_USUARIO_JSON, Usuario.class);
     }
 
-    public static CadastraUsuarioDto getMockCadastraUsuarioDto() {
-        return ObjetoJson.getMockObject(USUARIO_PATH, CADASTRA_USUARIO_DTO_JSON, CadastraUsuarioDto.class);
+    public static CadastraUsuarioDTO getMockCadastraUsuarioDto() {
+        return ObjetoJson.getMockObject(USUARIO_PATH, CADASTRA_USUARIO_DTO_JSON, CadastraUsuarioDTO.class);
     }
 
-    public static AlteraUsuarioDto getAlteraUsuarioDto() {
-        return ObjetoJson.getMockObject(USUARIO_PATH, ALTERA_USUARIO_DTO_JSON, AlteraUsuarioDto.class);
+    public static AlteraUsuarioDTO getAlteraUsuarioDto() {
+        return ObjetoJson.getMockObject(USUARIO_PATH, ALTERA_USUARIO_DTO_JSON, AlteraUsuarioDTO.class);
     }
 
-    public static BuscaAvancadaDto getMockBuscaAvancadaDto() {
-        return ObjetoJson.getMockObject(USUARIO_PATH, BUSCA_AVANCADA_DTO_JSON, BuscaAvancadaDto.class);
+    public static BuscaAvancadaDTO getMockBuscaAvancadaDto() {
+        return ObjetoJson.getMockObject(USUARIO_PATH, BUSCA_AVANCADA_DTO_JSON, BuscaAvancadaDTO.class);
     }
 
     public static Usuario getMockUsuario() {

@@ -6,7 +6,7 @@ import org.hibernate.validator.constraints.br.CPF;
 import java.time.LocalDate;
 
 
-public class BuscaAvancadaDto {
+public class BuscaAvancadaDTO {
 
     @CPF
     private String cpf;
