@@ -1,6 +1,4 @@
-package br.com.cadastro.model;
-
-import com.fasterxml.jackson.annotation.JsonSetter;
+package br.com.cadastro.models;
 
 import javax.persistence.*;
 

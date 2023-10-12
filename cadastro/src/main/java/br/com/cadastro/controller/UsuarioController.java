@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import br.com.cadastro.dto.EnderecoDTO;
-import br.com.cadastro.service.CepService;
+import br.com.cadastro.dtos.EnderecoDTO;
+import br.com.cadastro.services.CepService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -24,13 +24,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.cadastro.dto.AlteraUsuarioDTO;
-import br.com.cadastro.dto.BuscaAvancadaDTO;
-import br.com.cadastro.dto.CadastraUsuarioDTO;
-import br.com.cadastro.exception.RecursoExistenteException;
-import br.com.cadastro.exception.RecursoNaoEncontradoException;
-import br.com.cadastro.model.Usuario;
-import br.com.cadastro.service.UsuarioService;
+import br.com.cadastro.dtos.AlteraUsuarioDTO;
+import br.com.cadastro.dtos.BuscaAvancadaDTO;
+import br.com.cadastro.dtos.CadastraUsuarioDTO;
+import br.com.cadastro.exceptions.RecursoExistenteException;
+import br.com.cadastro.exceptions.RecursoNaoEncontradoException;
+import br.com.cadastro.models.Usuario;
+import br.com.cadastro.services.UsuarioService;
 
 @RestController
 @RequestMapping("/usuarios")

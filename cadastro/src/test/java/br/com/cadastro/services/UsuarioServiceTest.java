@@ -1,16 +1,16 @@
-package br.com.cadastro.service;
+package br.com.cadastro.services;
 
 import Util.MockJson;
 import br.com.cadastro.config.MensagemValidacao;
-import br.com.cadastro.dto.AlteraUsuarioDTO;
-import br.com.cadastro.dto.BuscaAvancadaDTO;
-import br.com.cadastro.dto.CadastraUsuarioDTO;
-import br.com.cadastro.exception.FiltroException;
-import br.com.cadastro.exception.RecursoExistenteException;
-import br.com.cadastro.exception.RecursoNaoEncontradoException;
-import br.com.cadastro.model.Endereco;
-import br.com.cadastro.model.Usuario;
-import br.com.cadastro.repository.UsuarioRepository;
+import br.com.cadastro.dtos.AlteraUsuarioDTO;
+import br.com.cadastro.dtos.BuscaAvancadaDTO;
+import br.com.cadastro.dtos.CadastraUsuarioDTO;
+import br.com.cadastro.exceptions.FiltroException;
+import br.com.cadastro.exceptions.RecursoExistenteException;
+import br.com.cadastro.exceptions.RecursoNaoEncontradoException;
+import br.com.cadastro.models.Endereco;
+import br.com.cadastro.models.Usuario;
+import br.com.cadastro.repositories.UsuarioRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

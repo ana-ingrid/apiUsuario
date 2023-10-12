@@ -1,4 +1,4 @@
-package br.com.cadastro.dto;
+package br.com.cadastro.dtos;
 
 import com.sun.istack.NotNull;
 

@@ -1,9 +1,9 @@
 package Util;
 
-import br.com.cadastro.dto.AlteraUsuarioDTO;
-import br.com.cadastro.dto.BuscaAvancadaDTO;
-import br.com.cadastro.dto.CadastraUsuarioDTO;
-import br.com.cadastro.model.Usuario;
+import br.com.cadastro.dtos.AlteraUsuarioDTO;
+import br.com.cadastro.dtos.BuscaAvancadaDTO;
+import br.com.cadastro.dtos.CadastraUsuarioDTO;
+import br.com.cadastro.models.Usuario;
 
 public class MockJson {
 

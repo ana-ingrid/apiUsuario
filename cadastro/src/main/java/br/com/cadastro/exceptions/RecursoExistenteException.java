@@ -1,4 +1,4 @@
-package br.com.cadastro.exception;
+package br.com.cadastro.exceptions;
 
 public class RecursoExistenteException extends RuntimeException {
 

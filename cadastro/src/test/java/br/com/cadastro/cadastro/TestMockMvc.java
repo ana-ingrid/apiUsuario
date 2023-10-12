@@ -1,12 +1,12 @@
 package br.com.cadastro.cadastro;
 
 import br.com.cadastro.controller.UsuarioController;
-import br.com.cadastro.dto.AlteraUsuarioDTO;
-import br.com.cadastro.dto.CadastraUsuarioDTO;
-import br.com.cadastro.exception.RecursoExistenteException;
-import br.com.cadastro.exception.RecursoNaoEncontradoException;
-import br.com.cadastro.service.CepService;
-import br.com.cadastro.service.UsuarioService;
+import br.com.cadastro.dtos.AlteraUsuarioDTO;
+import br.com.cadastro.dtos.CadastraUsuarioDTO;
+import br.com.cadastro.exceptions.RecursoExistenteException;
+import br.com.cadastro.exceptions.RecursoNaoEncontradoException;
+import br.com.cadastro.services.CepService;
+import br.com.cadastro.services.UsuarioService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

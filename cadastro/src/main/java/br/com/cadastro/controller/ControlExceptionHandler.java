@@ -1,8 +1,8 @@
 package br.com.cadastro.controller;
 
-import br.com.cadastro.exception.ErroConversaoException;
-import br.com.cadastro.exception.RecursoExistenteException;
-import br.com.cadastro.exception.RecursoNaoEncontradoException;
+import br.com.cadastro.exceptions.ErroConversaoException;
+import br.com.cadastro.exceptions.RecursoExistenteException;
+import br.com.cadastro.exceptions.RecursoNaoEncontradoException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;

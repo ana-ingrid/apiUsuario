@@ -1,4 +1,4 @@
-package br.com.cadastro.model;
+package br.com.cadastro.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,7 +19,6 @@ public class Usuario implements Serializable {
 	private String sexo;
 	
 	@Column(name="nascimento")
-//	@JsonFormat(pattern="yyyy-MM-dd")
 	private LocalDate nascimento;
 	
 	@OneToOne(cascade=CascadeType.ALL)

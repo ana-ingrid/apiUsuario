@@ -1,4 +1,4 @@
-package br.com.cadastro.dto;
+package br.com.cadastro.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.validator.constraints.br.CPF;

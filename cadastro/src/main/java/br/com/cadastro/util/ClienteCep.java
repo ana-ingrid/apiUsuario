@@ -1,6 +1,6 @@
 package br.com.cadastro.util;
 
-import br.com.cadastro.dto.EnderecoDTO;
+import br.com.cadastro.dtos.EnderecoDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -1,7 +1,7 @@
 package Util;
 
 import br.com.cadastro.config.MensagemValidacao;
-import br.com.cadastro.exception.ErroConversaoException;
+import br.com.cadastro.exceptions.ErroConversaoException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
